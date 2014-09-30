@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Framework Fiddle</title>
+<meta name="description" content="An Independent JS Fiddle Github Project Developed by Reasonease or Theodore Cacciola of Browser Frameworks " />
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>			    
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<script language="javascript">
+<!--
+
+var input = new Array();
+
+function PUTINPUTSINTOARRAY() {
+   var numberOfBoxes = 12;
+   var i;
+   for(i=0;i<numberOfBoxes;i++) {
+      input[i] = document.getElementById("input" + i).value;
+       // if(!isNaN(input[i])) {
+       //  input[i] = Number(input[i]);
+     // }
+   }
+}
+
+function CREATEINPUTBOXES() {
+   var numberOfBoxes = 12;
+   document.getElementById("inputBoxes").innerHTML = "";
+   var i;
+   var inputLabel;
+   var inputName;
+   for(i=0;i<numberOfBoxes;i++) {
+      inputLabel="input[" + i +"]";
+      inputName="input" + i;
+      document.getElementById("inputBoxes").innerHTML = document.getElementById("inputBoxes").innerHTML + 
+         "<nobr><b>" + inputLabel + "</b>" + "<input type=\'text\' id=\'" + inputName +"\' name=\'"+ inputName +"\' size=\'20\' /><br /></nobr>";
+  }
+}
+
+function EVALUATECODE() {
+   document.getElementById("printResults").innerHTML = "";
+   PUTINPUTSINTOARRAY();
+   try {
+      eval(document.getElementById("studentProgram").value); // eval(document.programForm.studentProgram.value);
+   }
+   catch(err) {
+      document.getElementById("printResults").innerHTML = "ERROR:  " + err.message;
+   }
+}
+
+function printNewLn(x) {
+   document.getElementById("printResults").value = document.getElementById("printResults").value + x + "\n";
+}
+
+function print(x) {
+   document.getElementById("printResults").value = document.getElementById("printResults").value + x ;
+}
+
+// -->
+</script>
+</head>
+
+<div class="row" style="background-color:#f3f3f3; color:#666666; font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif">
+<div class="container">
+<div class="row">
+<div class="col-md-8 col-sm-8 col-xs-12">  
+		  <form name="programForm">
+             <h3>Type Code Here</h3>
+          <textarea class="col-md-8 col-sm-8 col-xs-12" id="studentProgram" name="studentProgram" rows="12"></textarea><br />
+          <br />  
+          <div class="btn-group">
+  <button type="button" class="btn btn-default" value="Run Code" onClick="EVALUATECODE();" >
+    Submit
+  </button></form>
+  <br /> 
+  		<form name="printResults"> 
+         <h3> Results </h3>
+        	<textarea id="printResults" rows="12" cols="70"></textarea></form>
+          </div>
+            <div class="col-md-4 col-sm-4 col-xs-12"> 
+          <div id="printResults" name="printResults"
+                   readonly="readonly">  
+             <h3>Inputs</h3>
+         <div id="inputBoxes" name="inputBoxes"><body onLoad="CREATEINPUTBOXES();"></div>
+</div> 
+</body>
+</html>
